@@ -5,7 +5,7 @@
 ## 실시간 뉴스 보기
 
 아래 링크에서 최신 경제 뉴스를 확인할 수 있습니다:
-https://[YOUR_GITHUB_USERNAME].github.io/korean-economy-news/
+https://sangkwon9.github.io/korean-economy-news/
 
 ## 로컬에서 실행하기
 
