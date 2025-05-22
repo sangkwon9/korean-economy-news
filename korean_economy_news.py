@@ -5,7 +5,7 @@ import os
 import re
 
 # 설정값
-OUTPUT_DIR = "news_output"  # 뉴스 파일이 저장될 디렉토리
+OUTPUT_DIR = "docs"  # 뉴스 파일이 저장될 디렉토리
 
 def get_today_korean_date():
     return datetime.now().strftime("%Y.%m.%d")
