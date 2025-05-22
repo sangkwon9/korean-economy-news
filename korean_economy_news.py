@@ -35,20 +35,20 @@ def fetch_news_from_sources():
         "Accept-Language": "ko-KR,ko;q=0.8,en-US;q=0.5,en;q=0.3",
     }
 
-    # 한국경제 실제 작동하는 샘플 기사 URL (2023 데모용)
+    # 파이낸셜뉴스 실제 작동하는 샘플 기사 URL (데모용)
     sample_articles = [
-        ("美, 환율협상서 '원화 절상' 요구", "https://www.hankyung.com/economy/article/202305260540i", "한국경제"),
-        ("車·철강·석유 줄줄이 후퇴…5월 대미수출 15% 감소", "https://www.hankyung.com/economy/article/2023052176251", "한국경제"),
-        ("1∼20일 수출 2.4% 감소…'관세 영향' 대미 수출 14.6%↓", "https://www.hankyung.com/economy/article/2023052151871", "한국경제"),
-        ("수출 둔화·경기 하방 압력…내수 부진에 미국 관세 영향", "https://www.hankyung.com/economy/article/2023052601551", "한국경제"), 
-        ("한미 경제당국, 환율 협의 진행", "https://www.hankyung.com/economy/article/2023052652067", "한국경제"),
-        ("관세 영향 대미수출 감소…1∼10일 수출 23.8%↓", "https://www.hankyung.com/economy/article/2023051246061", "한국경제"), 
-        ("한은 통화정책…유동성 지원과 승수효과", "https://www.hankyung.com/economy/article/2023052216831", "한국경제"),
-        ("환율 협상 소식에 원화 강세…향후 절상 가능성", "https://www.hankyung.com/economy/article/2023052668987", "한국경제"),
-        ("美, 환율 압박…아시아 통화 동반강세", "https://www.hankyung.com/economy/article/2023052023761", "한국경제"),
-        ("우리은행 '원·달러 환율 상승 전망'", "https://www.hankyung.com/economy/article/2023052346871", "한국경제"),
-        ("주간 원·달러 환율 67원 오르내려", "https://www.hankyung.com/economy/article/2023052165278", "한국경제"),
-        ("美, 환율협상서 원화 절상 논의", "https://www.hankyung.com/economy/article/2023052189471", "한국경제"),
+        ("美, 환율협상서 '원화 절상' 요구", "https://www.fnnews.com/news/202305260927317615", "파이낸셜뉴스"),
+        ("車·철강·석유 줄줄이 후퇴…5월 대미수출 15% 감소", "https://www.fnnews.com/news/202305211743158071", "파이낸셜뉴스"),
+        ("1∼20일 수출 2.4% 감소…'관세 영향' 대미 수출 14.6%↓", "https://www.fnnews.com/news/202305211048324664", "파이낸셜뉴스"),
+        ("수출 둔화·경기 하방 압력…내수 부진에 미국 관세 영향", "https://www.fnnews.com/news/202305251819298400", "파이낸셜뉴스"), 
+        ("한미 경제당국, 환율 협의 진행", "https://www.fnnews.com/news/202305151648032203", "파이낸셜뉴스"),
+        ("관세 영향 대미수출 감소…1∼10일 수출 하락", "https://www.fnnews.com/news/202305121002004246", "파이낸셜뉴스"), 
+        ("한은 통화정책…금리 인하 여건 조성 중", "https://www.fnnews.com/news/202305221715589868", "파이낸셜뉴스"),
+        ("환율 협상 소식에 원화 강세…향후 절상 가능성", "https://www.fnnews.com/news/202305150857354959", "파이낸셜뉴스"),
+        ("美, 환율 압박…아시아 통화 동반강세", "https://www.fnnews.com/news/202305041805225232", "파이낸셜뉴스"),
+        ("은행들 '원·달러 환율 상승 전망'", "https://www.fnnews.com/news/202305021559324694", "파이낸셜뉴스"),
+        ("주간 원·달러 환율 흐름 및 향후 전망", "https://www.fnnews.com/news/202305191500479641", "파이낸셜뉴스"),
+        ("美, 환율협상 통한 무역 정책 변화", "https://www.fnnews.com/news/202305101733588086", "파이낸셜뉴스"),
     ]
     
     # 실제 뉴스를 사용하는 대신 샘플 기사로 대체
