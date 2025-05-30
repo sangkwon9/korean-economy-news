@@ -1,15 +1,5 @@
 // 현재 날짜 설정 (항상 현재 시점 기준)
-const TODAY = new Date();
-console.log('스크립트 초기화 시점 현재 날짜:', TODAY);
-
-// 고정된 날짜 확인 및 경고
-if (TODAY.getFullYear() === 2023 && TODAY.getMonth() === 5 && TODAY.getDate() === 8) {
-    console.error('경고: 현재 날짜가 2023.06.08로 설정되어 있습니다. 이는 올바르지 않을 수 있습니다.');
-}
-
-// 현재 한국 시간 표시
-const koreaTime = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
-console.log('현재 한국 시간:', koreaTime);
+console.log('스크립트 로드 시간:', new Date().toISOString());
 
 // 뉴스 데이터 (실제로는 API에서 가져올 예정)
 const mockNewsData = [
@@ -83,20 +73,8 @@ const categoryFilter = document.getElementById('categoryFilter');
 
 // 날짜 계산 함수
 function getDateFromOffset(dayOffset) {
-    // 명시적으로 새 Date 객체 생성
+    // 항상 새로운 현재 날짜를 생성
     const today = new Date();
-    
-    // 고정된 날짜가 있는지 확인
-    if (today.getFullYear() === 2023 && today.getMonth() === 5 && today.getDate() === 8) {
-        console.error('경고: 현재 날짜가 2023.06.08로 설정되어 있습니다. 이는 시스템 시간 설정 문제일 수 있습니다.');
-        
-        // 강제로 오늘 날짜를 설정 (임시 조치)
-        today.setFullYear(2025);
-        today.setMonth(4); // 5월 (0부터 시작)
-        today.setDate(30);
-    }
-    
-    // 날짜 계산
     const result = new Date(today);
     result.setDate(today.getDate() - dayOffset);
     
@@ -199,7 +177,6 @@ categoryFilter.addEventListener('change', filterNews);
 // 초기 뉴스 로드
 function loadInitialNews() {
     console.log('초기 뉴스 로드 시작...');
-    console.log('TODAY =', TODAY.toLocaleDateString('ko-KR'));
     
     setTimeout(() => {
         displayNews(mockNewsData);
@@ -222,12 +199,13 @@ async function fetchNewsFromAPI() {
 
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('페이지 로드 완료, 현재 날짜:', TODAY.toLocaleDateString('ko-KR'));
+    const currentDate = new Date();
+    console.log('페이지 로드 완료, 현재 날짜:', currentDate.toLocaleDateString('ko-KR'));
+    console.log('현재 날짜 상세:', currentDate.toString());
     
     // 업데이트 날짜 설정
     const updateDateElement = document.getElementById('updateDate');
     if (updateDateElement) {
-        const currentDate = new Date();
         const formattedCurrentDate = currentDate.toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '');
         updateDateElement.textContent = `${formattedCurrentDate} 업데이트`;
         console.log('업데이트 날짜 설정:', formattedCurrentDate);
