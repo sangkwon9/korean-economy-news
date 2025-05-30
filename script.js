@@ -5,60 +5,60 @@ console.log('스크립트 로드 시간:', new Date().toISOString());
 const mockNewsData = [
     {
         id: 1,
-        title: '한국은행 기준금리 현행 유지...물가 안정 기조 지속',
-        summary: '한국은행 금융통화위원회가 기준금리를 현행 3.50%에서 동결하기로 결정했습니다. 물가 안정을 위한 긴축 기조를 유지하겠다는 입장을 밝혔습니다.',
-        url: 'https://n.news.naver.com/mnews/article/001/0014654321?sid=101',
-        source: '연합뉴스',
+        title: '한국은행, 기준금리 3.0% 동결...원화 약세·트럼프 불확실성 고려',
+        summary: '한국은행이 기준금리를 3.0%로 동결했습니다. 원화 약세와 트럼프 행정부의 정책 불확실성을 고려한 결정으로 분석됩니다.',
+        url: 'https://en.yna.co.kr/view/AEN20250116003452320',
+        source: '연합뉴스(영문)',
         category: 'policy',
         dayOffset: 0, // 오늘
         imageUrl: 'https://picsum.photos/id/10/600/400'
     },
     {
         id: 2,
-        title: '삼성전자 3분기 영업이익 급증...반도체 회복세',
-        summary: '삼성전자가 3분기 연결 기준 영업이익이 전년 동기 대비 크게 증가했다고 발표했습니다. 메모리 반도체 가격 상승이 주요 원인으로 분석됩니다.',
-        url: 'https://n.news.naver.com/mnews/article/015/0004954123?sid=101',
-        source: '한국경제',
+        title: '삼성전자 1분기 매출 79조원 "사상 최대"...갤럭시S25 판매 호조',
+        summary: '삼성전자가 1분기 매출 79.14조원을 기록하며 사상 최대 분기 매출을 달성했습니다. 갤럭시S25 시리즈 판매 호조가 주요 원인으로 분석됩니다.',
+        url: 'https://www.thelec.kr/news/articleView.html?idxno=35531',
+        source: '디일렉',
         category: 'industry',
         dayOffset: 1, // 어제
         imageUrl: 'https://picsum.photos/id/20/600/400'
     },
     {
         id: 3,
-        title: 'SK하이닉스, HBM 수요 급증으로 실적 개선',
-        summary: 'SK하이닉스가 AI용 고대역폭 메모리(HBM) 수요 급증에 힘입어 매출과 영업이익이 크게 개선됐다고 발표했습니다.',
-        url: 'https://n.news.naver.com/mnews/article/277/0005443210?sid=101',
-        source: '아시아경제',
+        title: '삼성전자 영업이익 21.7% 증가...갤럭시S25 강세에도 반도체 부진',
+        summary: '삼성전자의 1분기 순이익이 21.7% 증가했습니다. 갤럭시S25 강세에도 불구하고 HBM 등 반도체 사업은 여전히 부진을 면치 못하고 있습니다.',
+        url: 'https://www.sammobile.com/news/samsung-profit-q1-2025-rises-21-7-percent-galaxy-s25-sales/',
+        source: 'SamMobile',
         category: 'industry',
         dayOffset: 2, // 2일 전
         imageUrl: 'https://picsum.photos/id/30/600/400'
     },
     {
         id: 4,
-        title: '원/달러 환율 1,380원대...연준 금리정책 주목',
-        summary: '원/달러 환율이 1,380원대에서 등락을 보이고 있습니다. 미국 연방준비제도의 통화정책 방향성에 따라 변동성이 확대될 것으로 전망됩니다.',
-        url: 'https://n.news.naver.com/mnews/article/018/0005654987?sid=101',
-        source: '이데일리',
+        title: '미 연준 금리 동결이 한국은행에 압박...한미 금리 격차 1.5%p 유지',
+        summary: '미국 연방준비제도의 금리 동결로 한국은행이 통화정책 완화 속도를 늦출 것으로 전망됩니다. 한미 금리 격차는 1.5%포인트로 유지되었습니다.',
+        url: 'https://www.koreaherald.com/article/10408713',
+        source: '코리아헤럴드',
         category: 'global',
         dayOffset: 3, // 3일 전
         imageUrl: 'https://picsum.photos/id/40/600/400'
     },
     {
         id: 5,
-        title: '기획재정부, 내년 예산안 677조원 편성',
-        summary: '기획재정부가 내년도 정부 예산안을 677조원 규모로 편성했다고 발표했습니다. 민생 안정과 경제 활력 제고에 중점을 둔 것으로 나타났습니다.',
-        url: 'https://n.news.naver.com/mnews/article/008/0004921654?sid=101',
-        source: '머니투데이',
+        title: '한국 2025년 경기 전망 어두워져...성장률 2% 하회 가능성',
+        summary: '한국 경제가 2025년 성장률 2% 하회 가능성이 높아지고 있습니다. 정치적 불확실성과 외부 요인으로 인한 경기 둔화 우려가 커지고 있습니다.',
+        url: 'https://koreajoongangdaily.joins.com/news/2025-01-01/business/economy/Korea-enters-2025-on-backfoot-amid-won-woes-glum-growth-outlook/2212636',
+        source: '코리아중앙데일리',
         category: 'policy',
         dayOffset: 4, // 4일 전
         imageUrl: 'https://picsum.photos/id/50/600/400'
     },
     {
         id: 6,
-        title: 'KOSPI 2,600선 근접...외국인 순매수 지속',
-        summary: 'KOSPI 지수가 2,600선에 근접하며 상승세를 보이고 있습니다. 외국인 투자자들의 순매수가 지속되면서 지수 상승을 견인하고 있습니다.',
-        url: 'https://n.news.naver.com/mnews/article/009/0005332187?sid=101',
-        source: '매일경제',
+        title: '삼성전자 스마트폰 강세로 반도체 부진 상쇄...1분기 실적 선방',
+        summary: '삼성전자가 스마트폰 사업의 강세로 반도체 부진을 상쇄하며 1분기 실적에서 선방했습니다. DX 부문이 전체 실적을 견인한 것으로 나타났습니다.',
+        url: 'https://www.digitimes.com/news/a20250430PD225/samsung-revenue-business-sales-operating-profit.html',
+        source: 'Digitimes',
         category: 'market',
         dayOffset: 5, // 5일 전
         imageUrl: 'https://picsum.photos/id/60/600/400'
