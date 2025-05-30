@@ -5,9 +5,9 @@ console.log('스크립트 로드 시간:', new Date().toISOString());
 const mockNewsData = [
     {
         id: 1,
-        title: '한국은행, 기준금리 동결 결정',
-        summary: '한국은행 금융통화위원회가 오늘 기준금리를 현행 3.50%에서 동결하기로 결정했습니다. 이는 시장의 예상과 일치하는 결과입니다.',
-        url: 'https://www.bok.or.kr',
+        title: '한국은행 기준금리 현행 유지...물가 안정 기조 지속',
+        summary: '한국은행 금융통화위원회가 기준금리를 현행 3.50%에서 동결하기로 결정했습니다. 물가 안정을 위한 긴축 기조를 유지하겠다는 입장을 밝혔습니다.',
+        url: 'https://www.bok.or.kr/portal/bbs/P0000559/list.do?menuNo=200690',
         source: '한국은행',
         category: 'policy',
         dayOffset: 0, // 오늘
@@ -15,50 +15,50 @@ const mockNewsData = [
     },
     {
         id: 2,
-        title: '2분기 경제성장률 2.3%, 예상치 상회',
-        summary: '한국 경제가 2분기에 2.3% 성장하며 예상치를 상회했습니다. 수출 증가와 내수 회복이 주요 원인으로 분석됩니다.',
-        url: 'https://news.naver.com/section/101',
-        source: '네이버 경제뉴스',
-        category: 'market',
+        title: '삼성전자 3분기 영업이익 급증...반도체 회복세',
+        summary: '삼성전자가 3분기 연결 기준 영업이익이 전년 동기 대비 크게 증가했다고 발표했습니다. 메모리 반도체 가격 상승이 주요 원인으로 분석됩니다.',
+        url: 'https://www.samsung.com/sec/ir/financial-information/earnings/',
+        source: '삼성전자',
+        category: 'industry',
         dayOffset: 1, // 어제
         imageUrl: 'https://picsum.photos/id/20/600/400'
     },
     {
         id: 3,
-        title: '반도체 수출 6개월 연속 증가세',
-        summary: '한국의 반도체 수출이 6개월 연속 증가세를 보이고 있습니다. 이는 글로벌 AI 수요 증가와 메모리 가격 회복에 따른 결과입니다.',
-        url: 'https://www.mk.co.kr',
-        source: '매일경제',
+        title: 'SK하이닉스, HBM 수요 급증으로 실적 개선',
+        summary: 'SK하이닉스가 AI용 고대역폭 메모리(HBM) 수요 급증에 힘입어 매출과 영업이익이 크게 개선됐다고 발표했습니다.',
+        url: 'https://www.skhynix.com/kor/ir/earnings-release',
+        source: 'SK하이닉스',
         category: 'industry',
         dayOffset: 2, // 2일 전
         imageUrl: 'https://picsum.photos/id/30/600/400'
     },
     {
         id: 4,
-        title: '미 연준, 9월 금리인하 가능성 시사',
-        summary: '미국 연방준비제도(Fed)가 9월 금리인하 가능성을 시사했습니다. 이에 따라 국내 금융시장에도 영향이 있을 것으로 예상됩니다.',
-        url: 'https://www.google.com/search?q=미국+연준+금리인하',
-        source: '경제뉴스 검색',
+        title: '원/달러 환율 1,380원대...연준 금리정책 주목',
+        summary: '원/달러 환율이 1,380원대에서 등락을 보이고 있습니다. 미국 연방준비제도의 통화정책 방향성에 따라 변동성이 확대될 것으로 전망됩니다.',
+        url: 'https://finance.naver.com/marketindex/exchangeDetail.naver?marketindexCd=FX_USDKRW',
+        source: '네이버 금융',
         category: 'global',
         dayOffset: 3, // 3일 전
         imageUrl: 'https://picsum.photos/id/40/600/400'
     },
     {
         id: 5,
-        title: '정부, 경제 활성화 위한 추경 편성 검토',
-        summary: '정부가 경제 활성화를 위한 추가경정예산 편성을 검토 중입니다. 주요 항목으로는 중소기업 지원과 취약계층 지원이 포함될 것으로 보입니다.',
-        url: 'https://www.edaily.co.kr',
-        source: '이데일리',
+        title: '기획재정부, 내년 예산안 677조원 편성',
+        summary: '기획재정부가 내년도 정부 예산안을 677조원 규모로 편성했다고 발표했습니다. 민생 안정과 경제 활력 제고에 중점을 둔 것으로 나타났습니다.',
+        url: 'https://www.moef.go.kr/nw/nes/detailNesDtaView.do?searchBbsId1=MOSFBBS_000000000028',
+        source: '기획재정부',
         category: 'policy',
         dayOffset: 4, // 4일 전
         imageUrl: 'https://picsum.photos/id/50/600/400'
     },
     {
         id: 6,
-        title: '코스피, 3,200선 회복',
-        summary: '코스피 지수가 3,200선을 회복했습니다. 외국인 매수세와 기업 실적 개선 기대감이 상승 요인으로 작용했습니다.',
-        url: 'https://finance.yahoo.com',
-        source: '야후 파이낸스',
+        title: 'KOSPI 2,600선 근접...외국인 순매수 지속',
+        summary: 'KOSPI 지수가 2,600선에 근접하며 상승세를 보이고 있습니다. 외국인 투자자들의 순매수가 지속되면서 지수 상승을 견인하고 있습니다.',
+        url: 'https://finance.naver.com/sise/sise_index.naver?code=KOSPI',
+        source: '네이버 증권',
         category: 'market',
         dayOffset: 5, // 5일 전
         imageUrl: 'https://picsum.photos/id/60/600/400'
