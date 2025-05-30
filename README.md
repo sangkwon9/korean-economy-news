@@ -1,65 +1,80 @@
-# 한국경제 뉴스 모아보기
+# 🏢 한국 HR 뉴스 모아보기
 
-한국 경제 관련 뉴스를 자동으로 수집하고 카테고리별로 분류하여 보여주는 웹사이트입니다.
+한국의 인사(HR) 관련 뉴스를 실시간으로 모아서 보여주는 웹사이트입니다.
 
-## 주요 기능
+## ✨ 주요 기능
 
-- 한국 경제 관련 뉴스 자동 수집 및 표시
-- 카테고리별 뉴스 필터링 (주식시장, 산업동향, 정책/제도, 국제경제)
-- 키워드 검색 기능
-- 반응형 디자인 (모바일, 태블릿, 데스크톱 지원)
+- **실시간 HR 뉴스 수집**: 채용, 연봉, 조직문화, 퇴사, 복리후생, 워라밸 관련 뉴스
+- **카테고리별 필터링**: 6개 주요 HR 카테고리로 구분
+- **실시간 검색**: 제목, 내용, 출처별 검색 기능
+- **반응형 디자인**: 모바일, 태블릿, 데스크톱 완벽 지원
+- **실제 뉴스 링크**: 각 기사별 원문 링크 제공
 
-## 개발 환경
+## 🎯 제공하는 HR 뉴스 카테고리
 
-- HTML5, CSS3, JavaScript (바닐라)
-- GitHub Pages를 이용한 호스팅
+1. **채용** - 신규 채용, 공채, 경력직 채용 소식
+2. **연봉** - 급여 동향, 최저임금, 임금 인상 소식
+3. **조직문화** - 기업 문화, 조직 개편, 인사제도 변화
+4. **퇴사** - 이직 동향, 퇴직금, 명예퇴직 관련
+5. **복리후생** - 각종 혜택, 복지제도 개선 소식
+6. **워라밸** - 근무시간, 유연근무, 일과 삶의 균형
 
-## 프로젝트 구조
+## 🚀 사용 기술
 
-```
-.
-├── index.html        # 메인 HTML 파일
-├── styles.css        # CSS 스타일시트
-├── script.js         # JavaScript 기능 구현
-└── README.md         # 프로젝트 설명
-```
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **스타일**: 현대적 그라데이션 UI, 반응형 디자인
+- **배포**: GitHub Pages
+- **자동화**: GitHub Actions
 
-## 실행 방법
+## 🌐 웹사이트 접속
 
-이 프로젝트는 GitHub Pages를 통해 호스팅되어 있습니다.
-아래 링크를 통해 접속하실 수 있습니다:
+[https://sangkwon9.github.io/korean-hr-news/](https://sangkwon9.github.io/korean-hr-news/)
 
-[한국경제 뉴스 모아보기](https://sangkwon9.github.io/korean-economy-news/)
+## 📱 기능 사용법
 
-## 로컬에서 실행하기
+### 뉴스 검색
+- 상단 검색창에 키워드 입력
+- 실시간으로 관련 뉴스 필터링
+- Enter 키 또는 검색 버튼으로 검색
 
-1. 이 저장소를 클론합니다:
-   ```
-   git clone https://github.com/sangkwon9/korean-economy-news.git
-   ```
+### 카테고리 필터
+- 드롭다운에서 원하는 카테고리 선택
+- 선택한 카테고리의 뉴스만 표시
 
-2. 클론한 디렉토리로 이동합니다:
-   ```
-   cd korean-economy-news
-   ```
+### 뉴스 읽기
+- 뉴스 카드 클릭 시 원문 기사로 이동
+- 새 탭에서 열리도록 설정
 
-3. `index.html` 파일을 웹 브라우저에서 엽니다.
+## 📊 뉴스 출처
 
-## 향후 개발 계획
+- 주요 언론사 (연합뉴스, 코리아헤럴드 등)
+- 정부 기관 (고용노동부, 통계청 등)
+- HR 전문 매체
+- 기업 공식 발표
 
-- 실시간 뉴스 API 연동
-- 사용자 계정 기능 추가 (관심 뉴스 저장, 알림 설정 등)
-- 뉴스 요약 기능 (AI 기반)
-- 다크 모드 지원
+## 🔄 업데이트 주기
 
-## 기여하기
+- 실시간 시간 표시 업데이트
+- 뉴스 데이터는 매일 갱신
+- 새로운 HR 트렌드 반영
 
-1. 이 저장소를 포크합니다.
-2. 새 브랜치를 생성합니다: `git checkout -b feature/your-feature-name`
-3. 변경사항을 커밋합니다: `git commit -m 'Add some feature'`
-4. 브랜치에 푸시합니다: `git push origin feature/your-feature-name`
-5. Pull Request를 제출합니다.
+## 🤝 기여하기
 
-## 라이센스
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-이 프로젝트는 MIT 라이센스를 따릅니다 - 자세한 내용은 LICENSE 파일을 참조하세요. 
+## 📞 문의 사항
+
+- GitHub Issues를 통한 버그 리포트 및 기능 제안
+- 이메일: [이메일 주소]
+
+## 📄 라이선스
+
+이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+
+---
+
+**한국 HR 뉴스 모아보기** - 채용부터 퇴사까지, HR 트렌드를 한눈에! 🚀 

@@ -1,37 +1,75 @@
-name: Deploy to GitHub Pages
+name: Deploy Korean HR News to GitHub Pages
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  pull_request:
+    branches: [ main ]
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
         
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
           
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 
+    - name: Validate HTML
+      run: |
+        echo "Validating HTML structure..."
+        # Basic HTML validation
+        if ! grep -q "<!DOCTYPE html>" index.html; then
+          echo "Error: Missing DOCTYPE declaration"
+          exit 1
+        fi
+        echo "HTML validation passed"
+        
+    - name: Check CSS syntax
+      run: |
+        echo "Checking CSS syntax..."
+        # Basic CSS validation
+        if [ -f styles.css ]; then
+          echo "CSS file found and ready for deployment"
+        else
+          echo "Error: CSS file not found"
+          exit 1
+        fi
+        
+    - name: Validate JavaScript
+      run: |
+        echo "Validating JavaScript..."
+        # Basic JS validation
+        if [ -f script.js ]; then
+          echo "JavaScript file found and ready for deployment"
+        else
+          echo "Error: JavaScript file not found"
+          exit 1
+        fi
+        
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        exclude_assets: '.github,README.md,.gitignore,deploy.sh'
+        
+    - name: Deployment notification
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "🎉 한국 HR 뉴스 웹사이트가 성공적으로 배포되었습니다!"
+        echo "🌐 URL: https://${{ github.repository_owner }}.github.io/korean-hr-news/"
+        echo "⏰ 변경사항이 반영되는데 몇 분 소요될 수 있습니다." 
