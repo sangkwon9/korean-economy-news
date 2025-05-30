@@ -1,3 +1,6 @@
+// 현재 날짜 설정
+const TODAY = new Date();
+
 // 뉴스 데이터 (실제로는 API에서 가져올 예정)
 const mockNewsData = [
     {
@@ -70,8 +73,9 @@ const categoryFilter = document.getElementById('categoryFilter');
 
 // 날짜 계산 함수
 function getDateFromOffset(dayOffset) {
-    const date = new Date();
+    const date = new Date(TODAY);
     date.setDate(date.getDate() - dayOffset);
+    console.log(`날짜 계산: offset=${dayOffset}, 결과=${date.toLocaleDateString('ko-KR')}`);
     return date;
 }
 
@@ -80,6 +84,8 @@ function createNewsItem(news) {
     // 날짜 계산
     const newsDate = getDateFromOffset(news.dayOffset);
     const formattedDate = formatDate(newsDate);
+    
+    console.log(`뉴스 ID: ${news.id}, 제목: ${news.title}, dayOffset: ${news.dayOffset}, 날짜: ${formattedDate}`);
     
     return `
         <div class="news-item">
@@ -111,6 +117,12 @@ function getCategoryName(category) {
 
 // 날짜 포맷 함수
 function formatDate(date) {
+    // 날짜가 유효한지 확인
+    if (isNaN(date.getTime())) {
+        console.error('유효하지 않은 날짜:', date);
+        return '날짜 오류';
+    }
+    
     return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 }
 
@@ -161,8 +173,12 @@ categoryFilter.addEventListener('change', filterNews);
 
 // 초기 뉴스 로드
 function loadInitialNews() {
+    console.log('초기 뉴스 로드 시작...');
+    console.log('TODAY =', TODAY.toLocaleDateString('ko-KR'));
+    
     setTimeout(() => {
         displayNews(mockNewsData);
+        console.log('뉴스 로드 완료');
     }, 1000); // 로딩 시간 시뮬레이션
 }
 
@@ -181,8 +197,6 @@ async function fetchNewsFromAPI() {
 
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('페이지 로드 완료, 현재 날짜:', TODAY.toLocaleDateString('ko-KR'));
     loadInitialNews();
-    
-    // 디버깅용: 날짜 확인
-    console.log("오늘 날짜:", new Date().toLocaleDateString('ko-KR'));
 }); 
