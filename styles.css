@@ -31,6 +31,12 @@ header h1 {
     margin-bottom: 10px;
 }
 
+.date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+}
+
 .filter-section {
     display: flex;
     justify-content: space-between;

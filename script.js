@@ -223,5 +223,15 @@ async function fetchNewsFromAPI() {
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
     console.log('페이지 로드 완료, 현재 날짜:', TODAY.toLocaleDateString('ko-KR'));
+    
+    // 업데이트 날짜 설정
+    const updateDateElement = document.getElementById('updateDate');
+    if (updateDateElement) {
+        const currentDate = new Date();
+        const formattedCurrentDate = currentDate.toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '');
+        updateDateElement.textContent = `${formattedCurrentDate} 업데이트`;
+        console.log('업데이트 날짜 설정:', formattedCurrentDate);
+    }
+    
     loadInitialNews();
 }); 
