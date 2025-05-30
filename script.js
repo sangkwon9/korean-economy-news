@@ -6,7 +6,7 @@ const mockNewsData = [
         summary: '한국은행 금융통화위원회가 오늘 기준금리를 현행 3.50%에서 동결하기로 결정했습니다. 이는 시장의 예상과 일치하는 결과입니다.',
         url: '#',
         source: '경제일보',
-        date: '2024-07-10',
+        date: new Date().toISOString().split('T')[0], // 오늘 날짜
         category: 'policy',
         imageUrl: 'https://picsum.photos/id/10/600/400'
     },
@@ -16,7 +16,7 @@ const mockNewsData = [
         summary: '한국 경제가 2분기에 2.3% 성장하며 예상치를 상회했습니다. 수출 증가와 내수 회복이 주요 원인으로 분석됩니다.',
         url: '#',
         source: '한국경제',
-        date: '2024-07-09',
+        date: new Date(Date.now() - 86400000).toISOString().split('T')[0], // 어제 날짜
         category: 'market',
         imageUrl: 'https://picsum.photos/id/20/600/400'
     },
@@ -26,7 +26,7 @@ const mockNewsData = [
         summary: '한국의 반도체 수출이 6개월 연속 증가세를 보이고 있습니다. 이는 글로벌 AI 수요 증가와 메모리 가격 회복에 따른 결과입니다.',
         url: '#',
         source: '산업경제',
-        date: '2024-07-08',
+        date: new Date(Date.now() - 2*86400000).toISOString().split('T')[0], // 2일 전
         category: 'industry',
         imageUrl: 'https://picsum.photos/id/30/600/400'
     },
@@ -36,7 +36,7 @@ const mockNewsData = [
         summary: '미국 연방준비제도(Fed)가 9월 금리인하 가능성을 시사했습니다. 이에 따라 국내 금융시장에도 영향이 있을 것으로 예상됩니다.',
         url: '#',
         source: '글로벌경제',
-        date: '2024-07-07',
+        date: new Date(Date.now() - 3*86400000).toISOString().split('T')[0], // 3일 전
         category: 'global',
         imageUrl: 'https://picsum.photos/id/40/600/400'
     },
@@ -46,7 +46,7 @@ const mockNewsData = [
         summary: '정부가 경제 활성화를 위한 추가경정예산 편성을 검토 중입니다. 주요 항목으로는 중소기업 지원과 취약계층 지원이 포함될 것으로 보입니다.',
         url: '#',
         source: '정책뉴스',
-        date: '2024-07-06',
+        date: new Date(Date.now() - 4*86400000).toISOString().split('T')[0], // 4일 전
         category: 'policy',
         imageUrl: 'https://picsum.photos/id/50/600/400'
     },
@@ -56,7 +56,7 @@ const mockNewsData = [
         summary: '코스피 지수가 3,200선을 회복했습니다. 외국인 매수세와 기업 실적 개선 기대감이 상승 요인으로 작용했습니다.',
         url: '#',
         source: '증권일보',
-        date: '2024-07-05',
+        date: new Date(Date.now() - 5*86400000).toISOString().split('T')[0], // 5일 전
         category: 'market',
         imageUrl: 'https://picsum.photos/id/60/600/400'
     }
