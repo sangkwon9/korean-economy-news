@@ -7,8 +7,8 @@ const mockNewsData = [
         id: 1,
         title: '한국은행, 기준금리 동결 결정',
         summary: '한국은행 금융통화위원회가 오늘 기준금리를 현행 3.50%에서 동결하기로 결정했습니다. 이는 시장의 예상과 일치하는 결과입니다.',
-        url: '#',
-        source: '경제일보',
+        url: 'https://www.bok.or.kr/portal/main/main.do',
+        source: '한국은행',
         category: 'policy',
         dayOffset: 0, // 오늘
         imageUrl: 'https://picsum.photos/id/10/600/400'
@@ -17,7 +17,7 @@ const mockNewsData = [
         id: 2,
         title: '2분기 경제성장률 2.3%, 예상치 상회',
         summary: '한국 경제가 2분기에 2.3% 성장하며 예상치를 상회했습니다. 수출 증가와 내수 회복이 주요 원인으로 분석됩니다.',
-        url: '#',
+        url: 'https://www.hankyung.com/economy',
         source: '한국경제',
         category: 'market',
         dayOffset: 1, // 어제
@@ -27,8 +27,8 @@ const mockNewsData = [
         id: 3,
         title: '반도체 수출 6개월 연속 증가세',
         summary: '한국의 반도체 수출이 6개월 연속 증가세를 보이고 있습니다. 이는 글로벌 AI 수요 증가와 메모리 가격 회복에 따른 결과입니다.',
-        url: '#',
-        source: '산업경제',
+        url: 'https://www.mk.co.kr/news/economy/',
+        source: '매일경제',
         category: 'industry',
         dayOffset: 2, // 2일 전
         imageUrl: 'https://picsum.photos/id/30/600/400'
@@ -37,8 +37,8 @@ const mockNewsData = [
         id: 4,
         title: '미 연준, 9월 금리인하 가능성 시사',
         summary: '미국 연방준비제도(Fed)가 9월 금리인하 가능성을 시사했습니다. 이에 따라 국내 금융시장에도 영향이 있을 것으로 예상됩니다.',
-        url: '#',
-        source: '글로벌경제',
+        url: 'https://www.sedaily.com/Economy',
+        source: '서울경제',
         category: 'global',
         dayOffset: 3, // 3일 전
         imageUrl: 'https://picsum.photos/id/40/600/400'
@@ -47,8 +47,8 @@ const mockNewsData = [
         id: 5,
         title: '정부, 경제 활성화 위한 추경 편성 검토',
         summary: '정부가 경제 활성화를 위한 추가경정예산 편성을 검토 중입니다. 주요 항목으로는 중소기업 지원과 취약계층 지원이 포함될 것으로 보입니다.',
-        url: '#',
-        source: '정책뉴스',
+        url: 'https://www.edaily.co.kr/news/economy',
+        source: '이데일리',
         category: 'policy',
         dayOffset: 4, // 4일 전
         imageUrl: 'https://picsum.photos/id/50/600/400'
@@ -57,8 +57,8 @@ const mockNewsData = [
         id: 6,
         title: '코스피, 3,200선 회복',
         summary: '코스피 지수가 3,200선을 회복했습니다. 외국인 매수세와 기업 실적 개선 기대감이 상승 요인으로 작용했습니다.',
-        url: '#',
-        source: '증권일보',
+        url: 'https://www.yna.co.kr/economy',
+        source: '연합뉴스',
         category: 'market',
         dayOffset: 5, // 5일 전
         imageUrl: 'https://picsum.photos/id/60/600/400'
@@ -91,15 +91,22 @@ function createNewsItem(news) {
     console.log(`뉴스 ID: ${news.id}, 제목: ${news.title}, dayOffset: ${news.dayOffset}, 날짜: ${formattedDate}`);
     
     return `
-        <div class="news-item">
+        <div class="news-item" onclick="openNewsLink('${news.url}')" style="cursor: pointer;">
             <img src="${news.imageUrl}" alt="${news.title}">
             <div class="news-content">
                 <span class="news-category">${getCategoryName(news.category)}</span>
-                <h3 class="news-title"><a href="${news.url}" target="_blank">${news.title}</a></h3>
+                <h3 class="news-title">
+                    <a href="${news.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
+                        ${news.title}
+                    </a>
+                </h3>
                 <p>${news.summary}</p>
                 <div class="news-source">
                     <span>${news.source}</span>
                     <span>${formattedDate}</span>
+                </div>
+                <div class="news-link">
+                    <small>클릭하여 전체 기사 보기 →</small>
                 </div>
             </div>
         </div>
@@ -195,6 +202,13 @@ async function fetchNewsFromAPI() {
     return new Promise(resolve => {
         setTimeout(() => resolve(mockNewsData), 1000);
     });
+}
+
+// 뉴스 링크 열기 함수
+function openNewsLink(url) {
+    if (url && url !== '#') {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
 }
 
 // 페이지 로드 시 실행

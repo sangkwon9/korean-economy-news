@@ -85,11 +85,12 @@ header h1 {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .news-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .news-item img {
@@ -133,6 +134,22 @@ header h1 {
     margin-top: 15px;
     color: #777;
     font-size: 0.9rem;
+}
+
+.news-link {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.news-link small {
+    color: #0a66c2;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.news-item:hover .news-link small {
+    opacity: 1;
 }
 
 .loading {
