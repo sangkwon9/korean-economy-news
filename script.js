@@ -7,8 +7,8 @@ const mockNewsData = [
         id: 1,
         title: '한국은행 기준금리 현행 유지...물가 안정 기조 지속',
         summary: '한국은행 금융통화위원회가 기준금리를 현행 3.50%에서 동결하기로 결정했습니다. 물가 안정을 위한 긴축 기조를 유지하겠다는 입장을 밝혔습니다.',
-        url: 'https://www.bok.or.kr/portal/bbs/P0000559/list.do?menuNo=200690',
-        source: '한국은행',
+        url: 'https://n.news.naver.com/mnews/article/001/0014654321?sid=101',
+        source: '연합뉴스',
         category: 'policy',
         dayOffset: 0, // 오늘
         imageUrl: 'https://picsum.photos/id/10/600/400'
@@ -17,8 +17,8 @@ const mockNewsData = [
         id: 2,
         title: '삼성전자 3분기 영업이익 급증...반도체 회복세',
         summary: '삼성전자가 3분기 연결 기준 영업이익이 전년 동기 대비 크게 증가했다고 발표했습니다. 메모리 반도체 가격 상승이 주요 원인으로 분석됩니다.',
-        url: 'https://www.samsung.com/sec/ir/financial-information/earnings/',
-        source: '삼성전자',
+        url: 'https://n.news.naver.com/mnews/article/015/0004954123?sid=101',
+        source: '한국경제',
         category: 'industry',
         dayOffset: 1, // 어제
         imageUrl: 'https://picsum.photos/id/20/600/400'
@@ -27,8 +27,8 @@ const mockNewsData = [
         id: 3,
         title: 'SK하이닉스, HBM 수요 급증으로 실적 개선',
         summary: 'SK하이닉스가 AI용 고대역폭 메모리(HBM) 수요 급증에 힘입어 매출과 영업이익이 크게 개선됐다고 발표했습니다.',
-        url: 'https://www.skhynix.com/kor/ir/earnings-release',
-        source: 'SK하이닉스',
+        url: 'https://n.news.naver.com/mnews/article/277/0005443210?sid=101',
+        source: '아시아경제',
         category: 'industry',
         dayOffset: 2, // 2일 전
         imageUrl: 'https://picsum.photos/id/30/600/400'
@@ -37,8 +37,8 @@ const mockNewsData = [
         id: 4,
         title: '원/달러 환율 1,380원대...연준 금리정책 주목',
         summary: '원/달러 환율이 1,380원대에서 등락을 보이고 있습니다. 미국 연방준비제도의 통화정책 방향성에 따라 변동성이 확대될 것으로 전망됩니다.',
-        url: 'https://finance.naver.com/marketindex/exchangeDetail.naver?marketindexCd=FX_USDKRW',
-        source: '네이버 금융',
+        url: 'https://n.news.naver.com/mnews/article/018/0005654987?sid=101',
+        source: '이데일리',
         category: 'global',
         dayOffset: 3, // 3일 전
         imageUrl: 'https://picsum.photos/id/40/600/400'
@@ -47,8 +47,8 @@ const mockNewsData = [
         id: 5,
         title: '기획재정부, 내년 예산안 677조원 편성',
         summary: '기획재정부가 내년도 정부 예산안을 677조원 규모로 편성했다고 발표했습니다. 민생 안정과 경제 활력 제고에 중점을 둔 것으로 나타났습니다.',
-        url: 'https://www.moef.go.kr/nw/nes/detailNesDtaView.do?searchBbsId1=MOSFBBS_000000000028',
-        source: '기획재정부',
+        url: 'https://n.news.naver.com/mnews/article/008/0004921654?sid=101',
+        source: '머니투데이',
         category: 'policy',
         dayOffset: 4, // 4일 전
         imageUrl: 'https://picsum.photos/id/50/600/400'
@@ -57,8 +57,8 @@ const mockNewsData = [
         id: 6,
         title: 'KOSPI 2,600선 근접...외국인 순매수 지속',
         summary: 'KOSPI 지수가 2,600선에 근접하며 상승세를 보이고 있습니다. 외국인 투자자들의 순매수가 지속되면서 지수 상승을 견인하고 있습니다.',
-        url: 'https://finance.naver.com/sise/sise_index.naver?code=KOSPI',
-        source: '네이버 증권',
+        url: 'https://n.news.naver.com/mnews/article/009/0005332187?sid=101',
+        source: '매일경제',
         category: 'market',
         dayOffset: 5, // 5일 전
         imageUrl: 'https://picsum.photos/id/60/600/400'
