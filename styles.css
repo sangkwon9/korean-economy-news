@@ -210,13 +210,14 @@ header p {
 
 .loading {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #666;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 3rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
     border-radius: 15px;
     grid-column: 1 / -1;
     backdrop-filter: blur(10px);
+    border: 2px dashed #e2e8f0;
 }
 
 footer {
@@ -306,4 +307,178 @@ footer a:hover {
 .news-item:nth-child(3) { animation-delay: 0.2s; }
 .news-item:nth-child(4) { animation-delay: 0.3s; }
 .news-item:nth-child(5) { animation-delay: 0.4s; }
-.news-item:nth-child(6) { animation-delay: 0.5s; } 
+.news-item:nth-child(6) { animation-delay: 0.5s; }
+
+/* 새로운 스타일 추가 */
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.popularity-score {
+    background: linear-gradient(135deg, #ff4444, #ff8800);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+}
+
+.news-item.featured {
+    border: 2px solid #ffd700;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+}
+
+.news-item.featured::before {
+    content: "🔥 인기";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.news-summary {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    padding: 0 1.5rem;
+}
+
+.news-source {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #888;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.source-name {
+    font-weight: 600;
+    color: #5a67d8;
+}
+
+.news-date {
+    color: #999;
+}
+
+.refresh-button {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    margin-left: 1rem;
+}
+
+.refresh-button:hover {
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.refresh-button:active {
+    transform: translateY(0);
+}
+
+/* 로딩 상태 개선 */
+.loading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    grid-column: 1 / -1;
+    backdrop-filter: blur(10px);
+    border: 2px dashed #e2e8f0;
+}
+
+.loading p {
+    margin-bottom: 0.5rem;
+}
+
+.loading p:first-child {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #5a67d8;
+}
+
+/* 검색 버튼 아이콘 스타일 */
+.search-box button {
+    min-width: 100px;
+}
+
+/* 애니메이션 개선 */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #5a67d8;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 반응형 개선 */
+@media (max-width: 768px) {
+    .news-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem 1rem 0 1rem;
+    }
+    
+    .news-summary {
+        padding: 0 1rem;
+    }
+    
+    .news-source {
+        padding: 0 1rem 1rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .refresh-button {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+    
+    .filter-section {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+} 
