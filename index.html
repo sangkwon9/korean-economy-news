@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국경제 뉴스 모아보기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>한국경제 뉴스 모아보기</h1>
+        <p>주요 경제 뉴스를 자동으로 수집하여 제공합니다</p>
+        <div class="update-info">
+            <span id="lastUpdated">업데이트 중...</span>
+            <button id="manualUpdate" style="margin-left: 10px; padding: 5px 10px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 12px; cursor: pointer; font-size: 0.8rem;">수동 업데이트</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="검색">
+            <button id="searchBtn">검색</button>
+        </div>
+
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">전체</button>
+            <button class="category-btn" data-category="stock">주식시장</button>
+            <button class="category-btn" data-category="industry">산업동향</button>
+            <button class="category-btn" data-category="policy">정책/제도</button>
+            <button class="category-btn" data-category="international">국제경제</button>
+        </div>
+
+        <div class="news-container">
+            <div id="loading" class="loading">
+                뉴스를 불러오는 중입니다...
+            </div>
+            <div id="newsGrid" class="news-grid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 한국경제 뉴스 모아보기. All rights reserved.</p>
+        <p>데이터 출처: 각 언론사 RSS 피드</p>
+        <p><a href="https://github.com/sangkwon9/korean-economy-news" target="_blank">GitHub 저장소</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

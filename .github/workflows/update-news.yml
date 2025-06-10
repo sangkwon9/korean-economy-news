@@ -1,0 +1,114 @@
+name: Update Korean Economy News
+
+on:
+  # 매일 한국 시간 오후 4시 (UTC 7시)에 실행
+  schedule:
+    - cron: '0 7 * * *'
+  
+  # 수동 실행도 가능하도록 설정
+  workflow_dispatch:
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install rss-parser xml2js axios
+    
+    - name: Fetch news data
+      run: node fetch-news.js
+      
+    - name: Update news data in JavaScript
+      run: |
+        # news-data.json을 script.js에서 사용할 수 있도록 처리
+        if [ -f "news-data.json" ]; then
+          echo "뉴스 데이터 파일이 생성되었습니다."
+          
+          # JavaScript 파일 업데이트 - 실제 뉴스 데이터를 사용하도록 수정
+          cat > update-script.js << 'EOF'
+          const fs = require('fs');
+          
+          // news-data.json 파일 읽기
+          const newsData = JSON.parse(fs.readFileSync('news-data.json', 'utf8'));
+          
+          // script.js 파일 업데이트
+          let scriptContent = fs.readFileSync('script.js', 'utf8');
+          
+          // generateSampleNews 함수 내용을 실제 데이터로 교체
+          const newFetchFunction = `
+          // 뉴스 데이터 가져오기 (GitHub Actions에서 업데이트됨)
+          async fetchNewsData() {
+              try {
+                  // GitHub Pages에서 업데이트된 뉴스 데이터 로드
+                  const response = await fetch('./news-data.json?t=' + new Date().getTime());
+                  if (!response.ok) {
+                      throw new Error('뉴스 데이터를 불러올 수 없습니다.');
+                  }
+                  const data = await response.json();
+                  return data.news || [];
+              } catch (error) {
+                  console.error('뉴스 데이터 로드 실패:', error);
+                  // 폴백으로 샘플 데이터 사용
+                  return this.generateSampleNews();
+              }
+          }`;
+          
+          // fetchNewsData 함수 교체
+          scriptContent = scriptContent.replace(
+              /\/\/ 뉴스 데이터 가져오기[\s\S]*?}$/m,
+              newFetchFunction
+          );
+          
+          fs.writeFileSync('script.js', scriptContent);
+          console.log('✅ script.js 파일이 업데이트되었습니다.');
+          EOF
+          
+          node update-script.js
+        fi
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # 변경사항이 있는지 확인
+        if git diff --quiet && git diff --staged --quiet; then
+          echo "변경사항이 없습니다."
+        else
+          git add news-data.json script.js
+          git commit -m "📰 뉴스 업데이트 - $(date '+%Y-%m-%d %H:%M KST')"
+          git push
+          echo "✅ 뉴스 데이터가 업데이트되었습니다."
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: update-news
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        ref: main  # 업데이트된 내용을 가져오기 위해
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        exclude_assets: '.github,node_modules,*.md,package*.json,fetch-news.js,update-script.js' 

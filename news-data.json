@@ -1,0 +1,206 @@
+{
+  "lastUpdated": "2025-06-10T06:36:43.445Z",
+  "newsCount": 20,
+  "news": [
+    {
+      "id": "news-1749537403439-3",
+      "title": "미국 연준 기준금리 동결 결정",
+      "description": "미국 연준 기준금리 동결 결정에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "KBS",
+      "category": "stock",
+      "categoryName": "주식시장",
+      "publishTime": "2025-06-10T08:41:00.000Z",
+      "url": "https://example.com/news/4"
+    },
+    {
+      "id": "news-1749537403439-1",
+      "title": "자동차 업계 실적 개선 전망",
+      "description": "자동차 업계 실적 개선 전망에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "KBS",
+      "category": "industry",
+      "categoryName": "산업동향",
+      "publishTime": "2025-06-10T07:45:00.000Z",
+      "url": "https://example.com/news/2"
+    },
+    {
+      "id": "news-1749537403439-0",
+      "title": "코스피 하락세 지속, 외국인 순매수 확대",
+      "description": "코스피 하락세 지속, 외국인 순매수 확대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "이데일리",
+      "category": "policy",
+      "categoryName": "정책/제도",
+      "publishTime": "2025-06-10T07:44:00.000Z",
+      "url": "https://example.com/news/1"
+    },
+    {
+      "id": "news-1749537403439-7",
+      "title": "국내 주요 기업 3분기 실적 발표 예정",
+      "description": "국내 주요 기업 3분기 실적 발표 예정에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "이데일리",
+      "category": "international",
+      "categoryName": "국제경제",
+      "publishTime": "2025-06-10T07:30:00.000Z",
+      "url": "https://example.com/news/8"
+    },
+    {
+      "id": "news-1749537403439-5",
+      "title": "부동산 시장 안정화 조치 시행",
+      "description": "부동산 시장 안정화 조치 시행에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다. 투자자들의 관심이 집중되고 있습니다.",
+      "source": "KBS",
+      "category": "stock",
+      "categoryName": "주식시장",
+      "publishTime": "2025-06-10T07:05:00.000Z",
+      "url": "https://example.com/news/6"
+    },
+    {
+      "id": "news-1749537403439-4",
+      "title": "반도체 업계 신기술 투자 확대",
+      "description": "반도체 업계 신기술 투자 확대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "머니투데이",
+      "category": "industry",
+      "categoryName": "산업동향",
+      "publishTime": "2025-06-10T06:58:00.000Z",
+      "url": "https://example.com/news/5"
+    },
+    {
+      "id": "news-1749537403439-17",
+      "title": "정부, 스타트업 지원 정책 발표",
+      "description": "정부, 스타트업 지원 정책 발표에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다. 투자자들의 관심이 집중되고 있습니다.",
+      "source": "머니투데이",
+      "category": "international",
+      "categoryName": "국제경제",
+      "publishTime": "2025-06-10T06:03:00.000Z",
+      "url": "https://example.com/news/18"
+    },
+    {
+      "id": "news-1749537403439-2",
+      "title": "정부, 스타트업 지원 정책 발표",
+      "description": "정부, 스타트업 지원 정책 발표에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다. 투자자들의 관심이 집중되고 있습니다.",
+      "source": "서울경제",
+      "category": "policy",
+      "categoryName": "정책/제도",
+      "publishTime": "2025-06-10T05:19:00.000Z",
+      "url": "https://example.com/news/3"
+    },
+    {
+      "id": "news-1749537403439-6",
+      "title": "원달러 환율 상승세 지속, 1,300원대",
+      "description": "원달러 환율 상승세 지속, 1,300원대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "KBS",
+      "category": "industry",
+      "categoryName": "산업동향",
+      "publishTime": "2025-06-10T04:30:00.000Z",
+      "url": "https://example.com/news/7"
+    },
+    {
+      "id": "news-1749537403439-14",
+      "title": "가스 가격 상승, 에너지 정책 재검토",
+      "description": "가스 가격 상승, 에너지 정책 재검토에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다. 투자자들의 관심이 집중되고 있습니다.",
+      "source": "서울경제",
+      "category": "stock",
+      "categoryName": "주식시장",
+      "publishTime": "2025-06-10T02:57:00.000Z",
+      "url": "https://example.com/news/15"
+    },
+    {
+      "id": "news-1749537403439-11",
+      "title": "수출 증가, 미국과의 교역 확대",
+      "description": "수출 증가, 미국과의 교역 확대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다. 투자자들의 관심이 집중되고 있습니다.",
+      "source": "서울경제",
+      "category": "industry",
+      "categoryName": "산업동향",
+      "publishTime": "2025-06-10T02:26:00.000Z",
+      "url": "https://example.com/news/12"
+    },
+    {
+      "id": "news-1749537403439-13",
+      "title": "증권업계 디지털 전환 가속화",
+      "description": "증권업계 디지털 전환 가속화에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "이데일리",
+      "category": "international",
+      "categoryName": "국제경제",
+      "publishTime": "2025-06-10T01:33:00.000Z",
+      "url": "https://example.com/news/14"
+    },
+    {
+      "id": "news-1749537403439-19",
+      "title": "반도체 업계 신기술 투자 확대",
+      "description": "반도체 업계 신기술 투자 확대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "매일경제",
+      "category": "international",
+      "categoryName": "국제경제",
+      "publishTime": "2025-06-10T01:10:00.000Z",
+      "url": "https://example.com/news/20"
+    },
+    {
+      "id": "news-1749537403439-16",
+      "title": "자동차 업계 실적 개선 전망",
+      "description": "자동차 업계 실적 개선 전망에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "이데일리",
+      "category": "industry",
+      "categoryName": "산업동향",
+      "publishTime": "2025-06-10T00:57:00.000Z",
+      "url": "https://example.com/news/17"
+    },
+    {
+      "id": "news-1749537403439-15",
+      "title": "코스피 하락세 지속, 외국인 순매수 확대",
+      "description": "코스피 하락세 지속, 외국인 순매수 확대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "SBS",
+      "category": "industry",
+      "categoryName": "산업동향",
+      "publishTime": "2025-06-10T00:21:00.000Z",
+      "url": "https://example.com/news/16"
+    },
+    {
+      "id": "news-1749537403439-10",
+      "title": "LG그룹, 해외 투자 확대",
+      "description": "LG그룹, 해외 투자 확대에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 중립적인 영향을 미칠 것으로 전망하고 있습니다. 향후 정책 방향에 대한 논의가 예상됩니다.",
+      "source": "서울경제",
+      "category": "international",
+      "categoryName": "국제경제",
+      "publishTime": "2025-06-10T00:02:00.000Z",
+      "url": "https://example.com/news/11"
+    },
+    {
+      "id": "news-1749537403439-18",
+      "title": "미국 연준 기준금리 동결 결정",
+      "description": "미국 연준 기준금리 동결 결정에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "이데일리",
+      "category": "stock",
+      "categoryName": "주식시장",
+      "publishTime": "2025-06-09T23:31:00.000Z",
+      "url": "https://example.com/news/19"
+    },
+    {
+      "id": "news-1749537403439-8",
+      "title": "글로벌 인플레이션 우려 지속",
+      "description": "글로벌 인플레이션 우려 지속에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다. 투자자들의 관심이 집중되고 있습니다.",
+      "source": "매일경제",
+      "category": "stock",
+      "categoryName": "주식시장",
+      "publishTime": "2025-06-09T23:20:00.000Z",
+      "url": "https://example.com/news/9"
+    },
+    {
+      "id": "news-1749537403439-12",
+      "title": "국내 GDP 상승, 경제성장률 전망 상향 조정",
+      "description": "국내 GDP 상승, 경제성장률 전망 상향 조정에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "서울경제",
+      "category": "policy",
+      "categoryName": "정책/제도",
+      "publishTime": "2025-06-09T23:04:00.000Z",
+      "url": "https://example.com/news/13"
+    },
+    {
+      "id": "news-1749537403439-9",
+      "title": "스타트업 투자 유치 증가세, 바이오 분야 주목",
+      "description": "스타트업 투자 유치 증가세, 바이오 분야 주목에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 부정적인 영향을 미칠 것으로 전망하고 있습니다. 시장 반응을 주목해야 할 것으로 보입니다.",
+      "source": "서울경제",
+      "category": "international",
+      "categoryName": "국제경제",
+      "publishTime": "2025-06-09T23:01:00.000Z",
+      "url": "https://example.com/news/10"
+    }
+  ]
+}
