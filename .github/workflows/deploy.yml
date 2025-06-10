@@ -1,0 +1,149 @@
+name: Deploy Korean Economy News to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # 매일 한국시간 자정 (UTC 15:00)에 실행
+    - cron: '0 15 * * *'
+  workflow_dispatch: # 수동 실행 허용
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        echo "✅ 의존성 설치 완료"
+        
+    - name: Update news data
+      run: |
+        echo "🚀 한국경제 뉴스 업데이트 시작..."
+        node update-news.js
+        echo "✅ 뉴스 데이터 업데이트 완료"
+        
+    - name: Configure git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: Commit updated news data
+      run: |
+        if [ -f "news-data.json" ]; then
+          git add news-data.json
+          if git diff --staged --quiet; then
+            echo "📄 변경사항이 없습니다."
+          else
+            git commit -m "🔄 자동 뉴스 업데이트: $(date '+%Y-%m-%d %H:%M:%S KST')"
+            echo "✅ 뉴스 데이터 커밋 완료"
+          fi
+        else
+          echo "❌ news-data.json 파일을 찾을 수 없습니다."
+        fi
+        
+    - name: Push changes
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git push origin main || echo "푸시할 변경사항이 없습니다."
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Validate HTML
+      run: |
+        echo "📝 HTML 구조 검증 중..."
+        if ! grep -q "<!DOCTYPE html>" index.html; then
+          echo "❌ Error: Missing DOCTYPE declaration"
+          exit 1
+        fi
+        if ! grep -q "한국경제 뉴스 모아보기" index.html; then
+          echo "❌ Error: Title not found"
+          exit 1
+        fi
+        echo "✅ HTML 검증 통과"
+        
+    - name: Check CSS syntax
+      run: |
+        echo "🎨 CSS 구문 확인 중..."
+        if [ -f styles.css ]; then
+          echo "✅ CSS 파일 확인 완료"
+        else
+          echo "❌ Error: CSS file not found"
+          exit 1
+        fi
+        
+    - name: Validate JavaScript
+      run: |
+        echo "⚡ JavaScript 검증 중..."
+        if [ -f script.js ]; then
+          echo "✅ JavaScript 파일 확인 완료"
+        else
+          echo "❌ Error: JavaScript file not found"
+          exit 1
+        fi
+        
+    - name: Check news data
+      run: |
+        echo "📊 뉴스 데이터 확인 중..."
+        if [ -f news-data.json ]; then
+          # JSON 형식 검증
+          if node -e "JSON.parse(require('fs').readFileSync('news-data.json', 'utf8'))"; then
+            echo "✅ 뉴스 데이터 JSON 형식 유효"
+            # 뉴스 개수 확인
+            NEWS_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('news-data.json', 'utf8')).news.length)")
+            echo "📈 수집된 뉴스 개수: $NEWS_COUNT"
+            if [ "$NEWS_COUNT" -gt 0 ]; then
+              echo "✅ 뉴스 데이터 검증 통과"
+            else
+              echo "⚠️ 경고: 뉴스가 없습니다."
+            fi
+          else
+            echo "❌ Error: Invalid JSON format in news-data.json"
+            exit 1
+          fi
+        else
+          echo "⚠️ 경고: news-data.json 파일이 없습니다. 백업 데이터 사용됨"
+        fi
+        
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        exclude_assets: '.github,README.md,.gitignore,deploy.sh,update-news.js,package.json,package-lock.json,node_modules'
+        
+    - name: Deployment notification
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "🎉 한국경제 뉴스 웹사이트가 성공적으로 배포되었습니다!"
+        echo "🌐 URL: https://${{ github.repository_owner }}.github.io/korean-economy-news/"
+        echo "⏰ 한국시간 기준: $(TZ='Asia/Seoul' date '+%Y년 %m월 %d일 %H시 %M분')"
+        echo "🔄 다음 자동 업데이트: 내일 자정 (00:00 KST)"
+        
+        if [ -f "news-data.json" ]; then
+          NEWS_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('news-data.json', 'utf8')).news.length)")
+          echo "📊 현재 뉴스 개수: $NEWS_COUNT"
+          LAST_UPDATE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('news-data.json', 'utf8')).updateTime || '정보 없음')")
+          echo "📅 마지막 업데이트: $LAST_UPDATE"
+        fi 
