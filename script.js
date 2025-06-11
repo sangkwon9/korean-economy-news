@@ -3,16 +3,13 @@ class KoreanEconomyNews {
         this.newsData = [];
         this.filteredNews = [];
         this.currentCategory = 'all';
-        this.lastUpdateTime = null;
-        this.updateScheduled = false;
         
         this.init();
     }
 
     init() {
         this.setupEventListeners();
-        this.checkForUpdate();
-        this.scheduleNextUpdate();
+        this.loadNews();
     }
 
     setupEventListeners() {
@@ -39,151 +36,59 @@ class KoreanEconomyNews {
         if (manualUpdateBtn) {
             manualUpdateBtn.addEventListener('click', () => {
                 console.log('수동 업데이트 버튼 클릭');
-                this.forceUpdate();
+                this.loadNews(true);
             });
         }
-
-        // 수동 업데이트 (디버깅용) - Ctrl+Shift+U
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.shiftKey && e.key === 'U') {
-                console.log('키보드 수동 업데이트 실행');
-                this.forceUpdate();
-            }
-        });
     }
 
-    // 한국 시간 기준으로 다음 오후 4시까지의 시간 계산
-    getNextUpdateTime() {
-        // 한국 시간으로 현재 시간 가져오기
-        const koreaTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
-        
-        // 오늘 오후 4시 설정
-        const today4PM = new Date(koreaTime);
-        today4PM.setHours(16, 0, 0, 0);
-        
-        console.log(`현재 한국 시간: ${koreaTime.toLocaleString('ko-KR')}`);
-        console.log(`오늘 오후 4시: ${today4PM.toLocaleString('ko-KR')}`);
-        
-        // 만약 현재 시간이 오후 4시 이후라면 다음날 오후 4시로 설정
-        if (koreaTime >= today4PM) {
-            today4PM.setDate(today4PM.getDate() + 1);
-            console.log(`다음 업데이트: 내일 오후 4시 (${today4PM.toLocaleString('ko-KR')})`);
-        } else {
-            console.log(`다음 업데이트: 오늘 오후 4시 (${today4PM.toLocaleString('ko-KR')})`);
-        }
-        
-        return today4PM;
-    }
-
-    // 업데이트 스케줄링
-    scheduleNextUpdate() {
-        if (this.updateScheduled) return;
-        
-        const nextUpdate = this.getNextUpdateTime();
-        const koreaTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
-        const timeUntilUpdate = nextUpdate.getTime() - koreaTime.getTime();
-        
-        console.log(`업데이트까지 남은 시간: ${Math.floor(timeUntilUpdate / (1000 * 60))}분`);
-        
-        // 음수면 즉시 업데이트
-        if (timeUntilUpdate <= 0) {
-            console.log('즉시 업데이트 실행');
-            this.updateNews();
-            return;
-        }
-        
-        setTimeout(() => {
-            console.log('스케줄된 업데이트 실행');
-            this.updateNews();
-            this.updateScheduled = false;
-            this.scheduleNextUpdate(); // 다음 업데이트 스케줄링
-        }, timeUntilUpdate);
-        
-        this.updateScheduled = true;
-    }
-
-    // 페이지 로드 시 업데이트 확인
-    checkForUpdate() {
-        const lastUpdate = localStorage.getItem('lastNewsUpdate');
-        const koreaTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
-        
-        console.log(`페이지 로드 시간 (한국): ${koreaTime.toLocaleString('ko-KR')}`);
-        
-        if (!lastUpdate) {
-            console.log('첫 방문 - 뉴스 업데이트 실행');
-            this.updateNews();
-            return;
-        }
-        
-        const lastUpdateTime = new Date(lastUpdate);
-        const today4PM = new Date(koreaTime);
-        today4PM.setHours(16, 0, 0, 0);
-        
-        console.log(`마지막 업데이트: ${lastUpdateTime.toLocaleString('ko-KR')}`);
-        console.log(`오늘 오후 4시: ${today4PM.toLocaleString('ko-KR')}`);
-        
-        // 마지막 업데이트가 오늘 오후 4시 이전이고, 현재 시간이 오후 4시 이후라면 업데이트
-        const shouldUpdate = lastUpdateTime < today4PM && koreaTime >= today4PM;
-        console.log(`업데이트 필요 여부: ${shouldUpdate}`);
-        
-        if (shouldUpdate) {
-            console.log('조건 만족 - 뉴스 업데이트 실행');
-            this.updateNews();
-        } else {
-            console.log('캐시된 뉴스 사용');
-            this.loadCachedNews();
-        }
-    }
-
-    // 뉴스 업데이트
-    async updateNews() {
+    // 뉴스 로드 (실제 데이터 또는 샘플 데이터)
+    async loadNews(forceUpdate = false) {
         try {
             document.getElementById('loading').style.display = 'block';
             document.getElementById('newsGrid').innerHTML = '';
             
-            // 실제 환경에서는 RSS 피드나 뉴스 API를 사용
-            const newsData = await this.fetchNewsData();
+            // 먼저 실제 뉴스 데이터를 로드해보고, 실패하면 샘플 데이터 사용
+            let newsData = await this.fetchRealNewsData();
+            
+            if (!newsData || newsData.length === 0) {
+                console.log('실제 뉴스 데이터를 불러올 수 없어 샘플 데이터를 사용합니다.');
+                newsData = this.generateSampleNews();
+            }
             
             this.newsData = newsData;
             this.filteredNews = [...this.newsData];
             
-            // 로컬 스토리지에 저장
-            localStorage.setItem('newsData', JSON.stringify(this.newsData));
-            localStorage.setItem('lastNewsUpdate', new Date().toISOString());
-            
             this.renderNews();
             this.updateLastUpdatedTime();
             
-            console.log('뉴스가 업데이트되었습니다.');
+            console.log('뉴스가 로드되었습니다:', this.newsData.length, '개');
         } catch (error) {
-            console.error('뉴스 업데이트 중 오류 발생:', error);
+            console.error('뉴스 로딩 중 오류 발생:', error);
             this.showError('뉴스를 불러오는 중 오류가 발생했습니다.');
         }
     }
 
-    // 캐시된 뉴스 로드
-    loadCachedNews() {
-        const cachedNews = localStorage.getItem('newsData');
-        if (cachedNews) {
-            this.newsData = JSON.parse(cachedNews);
-            this.filteredNews = [...this.newsData];
-            this.renderNews();
-            this.updateLastUpdatedTime();
-        } else {
-            this.updateNews();
+    // 실제 뉴스 데이터 로드 (news-data.json에서)
+    async fetchRealNewsData() {
+        try {
+            const response = await fetch('./news-data.json');
+            if (!response.ok) {
+                throw new Error('뉴스 데이터를 불러올 수 없습니다.');
+            }
+            const data = await response.json();
+            
+            // 날짜 문자열을 Date 객체로 변환
+            const newsWithDates = data.news.map(news => ({
+                ...news,
+                publishTime: new Date(news.publishTime)
+            }));
+            
+            // 최신순으로 정렬
+            return newsWithDates.sort((a, b) => b.publishTime - a.publishTime);
+        } catch (error) {
+            console.error('실제 뉴스 데이터 로드 실패:', error);
+            return null;
         }
-    }
-
-    // 뉴스 데이터 가져오기 (실제 API 연동 필요)
-    async fetchNewsData() {
-        // 실제 환경에서는 여러 언론사의 RSS 피드를 파싱하거나 뉴스 API를 사용
-        // 여기서는 샘플 데이터를 생성
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                const sampleNews = this.generateSampleNews();
-                resolve(sampleNews);
-            }, 1000);
-        });
     }
 
     // 샘플 뉴스 데이터 생성 (실제로는 RSS 피드에서 가져옴)
@@ -210,6 +115,16 @@ class KoreanEconomyNews {
             '스타트업 투자 유치 증가세'
         ];
 
+        // 각 언론사별 실제 URL 패턴
+        const sourceUrls = {
+            '연합뉴스': 'https://www.yna.co.kr/view/AKR20250610',
+            '매일경제': 'https://www.mk.co.kr/news/economy/',
+            '한국경제': 'https://www.hankyung.com/economy/article/',
+            '이데일리': 'https://www.edaily.co.kr/news/read?newsId=',
+            'KBS': 'https://news.kbs.co.kr/news/view.do?ncd=',
+            'SBS': 'https://news.sbs.co.kr/news/endPage.do?news_id='
+        };
+
         const news = [];
         const today = new Date();
         
@@ -219,16 +134,44 @@ class KoreanEconomyNews {
             publishTime.setHours(randomHour, Math.floor(Math.random() * 60));
             
             const category = categories[Math.floor(Math.random() * categories.length)];
+            const source = sources[Math.floor(Math.random() * sources.length)];
+            
+            // 각 언론사별로 실제 URL 패턴 생성
+            let newsUrl;
+            const randomId = Math.floor(Math.random() * 1000000);
+            
+            switch(source) {
+                case '연합뉴스':
+                    newsUrl = `${sourceUrls[source]}${randomId.toString().padStart(6, '0')}`;
+                    break;
+                case '매일경제':
+                    newsUrl = `${sourceUrls[source]}${randomId}`;
+                    break;
+                case '한국경제':
+                    newsUrl = `${sourceUrls[source]}${randomId}`;
+                    break;
+                case '이데일리':
+                    newsUrl = `${sourceUrls[source]}${randomId.toString().padStart(15, '0')}`;
+                    break;
+                case 'KBS':
+                    newsUrl = `${sourceUrls[source]}${randomId}`;
+                    break;
+                case 'SBS':
+                    newsUrl = `${sourceUrls[source]}N${randomId}`;
+                    break;
+                default:
+                    newsUrl = '#';
+            }
             
             news.push({
                 id: `news-${Date.now()}-${i}`,
                 title: sampleTitles[i % sampleTitles.length] + ` (${i + 1})`,
                 description: `${sampleTitles[i % sampleTitles.length]}에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다.`,
-                source: sources[Math.floor(Math.random() * sources.length)],
+                source: source,
                 category: category,
                 categoryName: categoryNames[category],
                 publishTime: publishTime,
-                url: '#'
+                url: newsUrl
             });
         }
 
@@ -263,17 +206,26 @@ class KoreanEconomyNews {
 
     // 시간 포맷팅
     formatTime(date) {
+        // date가 문자열인 경우 Date 객체로 변환
+        const dateObj = typeof date === 'string' ? new Date(date) : date;
+        
+        if (isNaN(dateObj.getTime())) {
+            return '시간 미상';
+        }
+        
         const now = new Date();
-        const diff = now - date;
+        const diff = now - dateObj;
         const minutes = Math.floor(diff / (1000 * 60));
         const hours = Math.floor(minutes / 60);
 
-        if (minutes < 60) {
+        if (minutes < 1) {
+            return '방금 전';
+        } else if (minutes < 60) {
             return `${minutes}분 전`;
         } else if (hours < 24) {
             return `${hours}시간 전`;
         } else {
-            return date.toLocaleDateString('ko-KR', {
+            return dateObj.toLocaleDateString('ko-KR', {
                 month: 'short',
                 day: 'numeric',
                 hour: '2-digit',
@@ -324,22 +276,14 @@ class KoreanEconomyNews {
     // 마지막 업데이트 시간 표시
     updateLastUpdatedTime() {
         const lastUpdated = document.getElementById('lastUpdated');
-        const koreaTime = new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Seoul"}));
+        const now = new Date();
         
-        lastUpdated.textContent = `마지막 업데이트: ${koreaTime.toLocaleString('ko-KR', {
+        lastUpdated.textContent = `마지막 업데이트: ${now.toLocaleString('ko-KR', {
             month: 'short',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
         })}`;
-    }
-
-    // 강제 업데이트 (디버깅 및 수동 실행용)
-    forceUpdate() {
-        console.log('강제 업데이트 실행');
-        // localStorage에서 마지막 업데이트 시간 제거하여 강제 업데이트
-        localStorage.removeItem('lastNewsUpdate');
-        this.updateNews();
     }
 
     // 에러 메시지 표시

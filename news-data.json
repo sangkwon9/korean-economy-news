@@ -10,7 +10,7 @@
       "category": "stock",
       "categoryName": "주식시장",
       "publishTime": "2025-06-10T08:41:00.000Z",
-      "url": "https://example.com/news/4"
+      "url": "https://news.kbs.co.kr/news/view.do?ncd=8161479"
     },
     {
       "id": "news-1749537403439-1",
@@ -20,7 +20,7 @@
       "category": "industry",
       "categoryName": "산업동향",
       "publishTime": "2025-06-10T07:45:00.000Z",
-      "url": "https://example.com/news/2"
+      "url": "https://news.kbs.co.kr/news/view.do?ncd=8161478"
     },
     {
       "id": "news-1749537403439-0",
@@ -30,7 +30,7 @@
       "category": "policy",
       "categoryName": "정책/제도",
       "publishTime": "2025-06-10T07:44:00.000Z",
-      "url": "https://example.com/news/1"
+      "url": "https://www.edaily.co.kr/news/read?newsId=03996246638853616"
     },
     {
       "id": "news-1749537403439-7",
@@ -40,7 +40,7 @@
       "category": "international",
       "categoryName": "국제경제",
       "publishTime": "2025-06-10T07:30:00.000Z",
-      "url": "https://example.com/news/8"
+      "url": "https://www.edaily.co.kr/news/read?newsId=03996246638853617"
     },
     {
       "id": "news-1749537403439-5",
@@ -50,7 +50,7 @@
       "category": "stock",
       "categoryName": "주식시장",
       "publishTime": "2025-06-10T07:05:00.000Z",
-      "url": "https://example.com/news/6"
+      "url": "https://news.kbs.co.kr/news/view.do?ncd=8161477"
     },
     {
       "id": "news-1749537403439-4",
@@ -60,7 +60,7 @@
       "category": "industry",
       "categoryName": "산업동향",
       "publishTime": "2025-06-10T06:58:00.000Z",
-      "url": "https://example.com/news/5"
+      "url": "https://news.mt.co.kr/mtview.php?no=2025061016485432764"
     },
     {
       "id": "news-1749537403439-17",
@@ -70,7 +70,7 @@
       "category": "international",
       "categoryName": "국제경제",
       "publishTime": "2025-06-10T06:03:00.000Z",
-      "url": "https://example.com/news/18"
+      "url": "https://news.mt.co.kr/mtview.php?no=2025061016485432765"
     },
     {
       "id": "news-1749537403439-2",
@@ -80,7 +80,7 @@
       "category": "policy",
       "categoryName": "정책/제도",
       "publishTime": "2025-06-10T05:19:00.000Z",
-      "url": "https://example.com/news/3"
+      "url": "https://www.sedaily.com/NewsView/302BC7P39X"
     },
     {
       "id": "news-1749537403439-6",
@@ -90,7 +90,7 @@
       "category": "industry",
       "categoryName": "산업동향",
       "publishTime": "2025-06-10T04:30:00.000Z",
-      "url": "https://example.com/news/7"
+      "url": "https://news.kbs.co.kr/news/view.do?ncd=8161476"
     },
     {
       "id": "news-1749537403439-14",
@@ -100,7 +100,7 @@
       "category": "stock",
       "categoryName": "주식시장",
       "publishTime": "2025-06-10T02:57:00.000Z",
-      "url": "https://example.com/news/15"
+      "url": "https://www.sedaily.com/NewsView/302BC7P40A"
     },
     {
       "id": "news-1749537403439-11",
@@ -110,7 +110,7 @@
       "category": "industry",
       "categoryName": "산업동향",
       "publishTime": "2025-06-10T02:26:00.000Z",
-      "url": "https://example.com/news/12"
+      "url": "https://www.sedaily.com/NewsView/302BC7P40B"
     },
     {
       "id": "news-1749537403439-13",
@@ -120,7 +120,7 @@
       "category": "international",
       "categoryName": "국제경제",
       "publishTime": "2025-06-10T01:33:00.000Z",
-      "url": "https://example.com/news/14"
+      "url": "https://www.edaily.co.kr/news/read?newsId=03996246638853618"
     },
     {
       "id": "news-1749537403439-19",
@@ -130,7 +130,7 @@
       "category": "international",
       "categoryName": "국제경제",
       "publishTime": "2025-06-10T01:10:00.000Z",
-      "url": "https://example.com/news/20"
+      "url": "https://www.mk.co.kr/news/economy/11032451"
     },
     {
       "id": "news-1749537403439-16",
@@ -140,7 +140,7 @@
       "category": "industry",
       "categoryName": "산업동향",
       "publishTime": "2025-06-10T00:57:00.000Z",
-      "url": "https://example.com/news/17"
+      "url": "https://www.edaily.co.kr/news/read?newsId=03996246638853619"
     },
     {
       "id": "news-1749537403439-15",
@@ -150,7 +150,7 @@
       "category": "industry",
       "categoryName": "산업동향",
       "publishTime": "2025-06-10T00:21:00.000Z",
-      "url": "https://example.com/news/16"
+      "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1007928431"
     },
     {
       "id": "news-1749537403439-10",
@@ -160,7 +160,7 @@
       "category": "international",
       "categoryName": "국제경제",
       "publishTime": "2025-06-10T00:02:00.000Z",
-      "url": "https://example.com/news/11"
+      "url": "https://www.sedaily.com/NewsView/302BC7P40C"
     },
     {
       "id": "news-1749537403439-18",
@@ -170,7 +170,7 @@
       "category": "stock",
       "categoryName": "주식시장",
       "publishTime": "2025-06-09T23:31:00.000Z",
-      "url": "https://example.com/news/19"
+      "url": "https://www.edaily.co.kr/news/read?newsId=03996246638853620"
     },
     {
       "id": "news-1749537403439-8",
@@ -180,7 +180,7 @@
       "category": "stock",
       "categoryName": "주식시장",
       "publishTime": "2025-06-09T23:20:00.000Z",
-      "url": "https://example.com/news/9"
+      "url": "https://www.mk.co.kr/news/economy/11032452"
     },
     {
       "id": "news-1749537403439-12",
@@ -190,7 +190,7 @@
       "category": "policy",
       "categoryName": "정책/제도",
       "publishTime": "2025-06-09T23:04:00.000Z",
-      "url": "https://example.com/news/13"
+      "url": "https://www.sedaily.com/NewsView/302BC7P40D"
     },
     {
       "id": "news-1749537403439-9",
@@ -199,8 +199,8 @@
       "source": "서울경제",
       "category": "international",
       "categoryName": "국제경제",
-      "publishTime": "2025-06-09T23:01:00.000Z",
-      "url": "https://example.com/news/10"
+      "publishTime": "2025-06-09T22:53:00.000Z",
+      "url": "https://www.sedaily.com/NewsView/302BC7P40E"
     }
   ]
 }
