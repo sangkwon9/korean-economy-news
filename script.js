@@ -77,10 +77,11 @@ class KoreanEconomyNews {
             }
             const data = await response.json();
             
-            // 날짜 문자열을 Date 객체로 변환
+            // 날짜 문자열을 Date 객체로 변환하고 검색 URL로 변경
             const newsWithDates = data.news.map(news => ({
                 ...news,
-                publishTime: new Date(news.publishTime)
+                publishTime: new Date(news.publishTime),
+                url: this.generateSearchUrl(news.source, news.title)
             }));
             
             // 최신순으로 정렬
@@ -89,6 +90,25 @@ class KoreanEconomyNews {
             console.error('실제 뉴스 데이터 로드 실패:', error);
             return null;
         }
+    }
+
+    // 언론사별 검색 URL 생성
+    generateSearchUrl(source, title) {
+        // 기사 제목에서 검색에 적합한 키워드 추출
+        const searchQuery = encodeURIComponent(title.replace(/[^\w\s가-힣]/g, '').trim());
+        
+        const searchUrls = {
+            'KBS': `https://news.kbs.co.kr/news/list.do?icd=19588&query=${searchQuery}`,
+            '이데일리': `https://www.edaily.co.kr/search/news/?source=total&include=title&keyword=${searchQuery}`,
+            '서울경제': `https://www.sedaily.com/Search?searchText=${searchQuery}`,
+            '머니투데이': `https://search.mt.co.kr/search.html?query=${searchQuery}`,
+            '매일경제': `https://www.mk.co.kr/search/?keyword=${searchQuery}`,
+            'SBS': `https://news.sbs.co.kr/news/search/main.do?query=${searchQuery}`,
+            '연합뉴스': `https://www.yna.co.kr/search/?query=${searchQuery}`,
+            '한국경제': `https://www.hankyung.com/search?query=${searchQuery}`
+        };
+        
+        return searchUrls[source] || `https://www.google.com/search?q=${searchQuery}+${encodeURIComponent(source)}`;
     }
 
     // 샘플 뉴스 데이터 생성 (실제로는 RSS 피드에서 가져옴)
@@ -115,15 +135,7 @@ class KoreanEconomyNews {
             '스타트업 투자 유치 증가세'
         ];
 
-        // 각 언론사별 실제 URL 패턴
-        const sourceUrls = {
-            '연합뉴스': 'https://www.yna.co.kr/view/AKR20250610',
-            '매일경제': 'https://www.mk.co.kr/news/economy/',
-            '한국경제': 'https://www.hankyung.com/economy/article/',
-            '이데일리': 'https://www.edaily.co.kr/news/read?newsId=',
-            'KBS': 'https://news.kbs.co.kr/news/view.do?ncd=',
-            'SBS': 'https://news.sbs.co.kr/news/endPage.do?news_id='
-        };
+
 
         const news = [];
         const today = new Date();
@@ -136,36 +148,13 @@ class KoreanEconomyNews {
             const category = categories[Math.floor(Math.random() * categories.length)];
             const source = sources[Math.floor(Math.random() * sources.length)];
             
-            // 각 언론사별로 실제 URL 패턴 생성
-            let newsUrl;
-            const randomId = Math.floor(Math.random() * 1000000);
-            
-            switch(source) {
-                case '연합뉴스':
-                    newsUrl = `${sourceUrls[source]}${randomId.toString().padStart(6, '0')}`;
-                    break;
-                case '매일경제':
-                    newsUrl = `${sourceUrls[source]}${randomId}`;
-                    break;
-                case '한국경제':
-                    newsUrl = `${sourceUrls[source]}${randomId}`;
-                    break;
-                case '이데일리':
-                    newsUrl = `${sourceUrls[source]}${randomId.toString().padStart(15, '0')}`;
-                    break;
-                case 'KBS':
-                    newsUrl = `${sourceUrls[source]}${randomId}`;
-                    break;
-                case 'SBS':
-                    newsUrl = `${sourceUrls[source]}N${randomId}`;
-                    break;
-                default:
-                    newsUrl = '#';
-            }
+            // 기사 제목으로 검색 URL 생성
+            const title = sampleTitles[i % sampleTitles.length] + ` (${i + 1})`;
+            const newsUrl = this.generateSearchUrl(source, title);
             
             news.push({
                 id: `news-${Date.now()}-${i}`,
-                title: sampleTitles[i % sampleTitles.length] + ` (${i + 1})`,
+                title: title,
                 description: `${sampleTitles[i % sampleTitles.length]}에 관한 상세한 내용입니다. 경제 전문가들은 이번 발표가 시장에 긍정적인 영향을 미칠 것으로 전망하고 있습니다.`,
                 source: source,
                 category: category,
