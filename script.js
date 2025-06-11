@@ -77,11 +77,10 @@ class KoreanEconomyNews {
             }
             const data = await response.json();
             
-            // 날짜 문자열을 Date 객체로 변환하고 검색 URL로 변경
+            // 날짜 문자열을 Date 객체로 변환
             const newsWithDates = data.news.map(news => ({
                 ...news,
-                publishTime: new Date(news.publishTime),
-                url: this.generateSearchUrl(news.source, news.title)
+                publishTime: new Date(news.publishTime)
             }));
             
             // 최신순으로 정렬
@@ -92,24 +91,7 @@ class KoreanEconomyNews {
         }
     }
 
-    // 언론사별 검색 URL 생성
-    generateSearchUrl(source, title) {
-        // 기사 제목에서 검색에 적합한 키워드 추출
-        const searchQuery = encodeURIComponent(title.replace(/[^\w\s가-힣]/g, '').trim());
-        
-        const searchUrls = {
-            'KBS': `https://news.kbs.co.kr/news/list.do?icd=19588&query=${searchQuery}`,
-            '이데일리': `https://www.edaily.co.kr/search/news/?source=total&include=title&keyword=${searchQuery}`,
-            '서울경제': `https://www.sedaily.com/Search?searchText=${searchQuery}`,
-            '머니투데이': `https://search.mt.co.kr/search.html?query=${searchQuery}`,
-            '매일경제': `https://www.mk.co.kr/search/?keyword=${searchQuery}`,
-            'SBS': `https://news.sbs.co.kr/news/search/main.do?query=${searchQuery}`,
-            '연합뉴스': `https://www.yna.co.kr/search/?query=${searchQuery}`,
-            '한국경제': `https://www.hankyung.com/search?query=${searchQuery}`
-        };
-        
-        return searchUrls[source] || `https://www.google.com/search?q=${searchQuery}+${encodeURIComponent(source)}`;
-    }
+
 
     // 샘플 뉴스 데이터 생성 (실제로는 RSS 피드에서 가져옴)
     generateSampleNews() {
@@ -148,9 +130,9 @@ class KoreanEconomyNews {
             const category = categories[Math.floor(Math.random() * categories.length)];
             const source = sources[Math.floor(Math.random() * sources.length)];
             
-            // 기사 제목으로 검색 URL 생성
+            // 기사 제목과 URL 생성
             const title = sampleTitles[i % sampleTitles.length] + ` (${i + 1})`;
-            const newsUrl = this.generateSearchUrl(source, title);
+            const newsUrl = '#'; // 샘플 데이터이므로 링크 없음
             
             news.push({
                 id: `news-${Date.now()}-${i}`,
