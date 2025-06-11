@@ -7,13 +7,18 @@
     "update-news": "node update-news.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["한국경제", "뉴스", "경제뉴스", "자동수집"],
+  "keywords": [
+    "한국경제",
+    "뉴스",
+    "경제뉴스",
+    "자동수집"
+  ],
   "author": "sangkwon9",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.2",
-    "cheerio": "^1.0.0-rc.12",
-    "xml2js": "^0.6.2",
-    "moment-timezone": "^0.5.44"
+    "axios": "^1.9.0",
+    "cheerio": "^1.1.0",
+    "moment-timezone": "^0.5.44",
+    "xml2js": "^0.6.2"
   }
-} 
+}
